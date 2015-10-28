@@ -1,7 +1,8 @@
 body {
   padding-top: 20px;
-	background-color: black;
-	background-image: url(ao.gif);
+	background-color: grey;
+	background-image: url(ao.png);
+	background-position: right 34px bottom 5px;
 }
 
 #faq  p {
@@ -14,16 +15,16 @@ body {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 745px;
   }
 }
 
 #header {
-	font-size: 22px;
+	font-size: 2px;
 	margin-bottom: 0px;
-	background: #e78317;
+	background: #00000;
 	padding: 20px;
-	color: white;
+	color: #007700;
 	margin-left: -20px;
 	margin-right: -20px;
 	
@@ -31,7 +32,7 @@ body {
 }
 
 #address-wrapper {
-	border: 1px solid rgb(229, 229, 229);
+	border: 1px solid rgb(226, 226, 226);
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 0px 0px 10px 5px rgb(221, 221, 221);

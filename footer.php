@@ -1,5 +1,5 @@
 	<div id="footer">
-		<p>&copy; 2014 Crypton | Powered by <a href="https://github.com/Crypton33/CryptoPonzi">CryptoPonzi</a> script</p>
+		<p>&copy; 2015 ClamBaker.Club | Powered by <a href="http://Clamclient.com">CLAM</a></p>
 	</div>
 	</div>
 </body>

@@ -106,6 +106,8 @@ class jsonRPCClient {
 			throw new Exception('Params must be given as array');
 		}
 		
+		$this->id++;
+
 		// sets notification or request task
 		if ($this->notification) {
 			$currentId = NULL;
@@ -126,9 +128,13 @@ class jsonRPCClient {
 		$opts = array ('http' => array (
 							'method'  => 'POST',
 							'header'  => 'Content-type: application/json',
+                                                        'ignore_errors' => 'true',
 							'content' => $request
 							));
 		$context  = stream_context_create($opts);
+		print "attempting to connect to clamd with:\n";
+		print_r($request);
+		print "\n";
 		if ($fp = fopen($this->url, 'r', false, $context)) {
 			$response = '';
 			while($row = fgets($fp)) {
@@ -136,13 +142,14 @@ class jsonRPCClient {
 			}
 			$this->debug && $this->debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
 			$response = json_decode($response,true);
+			fclose($fp);
 		} else {
 			throw new Exception('Unable to connect to '.$this->url);
 		}
 		
 		// debug output
 		if ($this->debug) {
-			echo nl2br($debug);
+			echo nl2br($this->debug);
 		}
 		
 		// final checks and return
@@ -152,7 +159,7 @@ class jsonRPCClient {
 				throw new Exception('Incorrect response id (request id: '.$currentId.', response id: '.$response['id'].')');
 			}
 			if (!is_null($response['error'])) {
-				throw new Exception('Request error: '.$response['error']);
+				throw new Exception('Request error: ('.$response['error']['code'].') '.$response['error']['message']);
 			}
 			
 			return $response['result'];
