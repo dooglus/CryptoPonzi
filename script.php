@@ -5,7 +5,6 @@
 	$client = new jsonRPCClient('http://' . $rpc['login'] . ':' . $rpc['password'] . '@' . $rpc['ip'] . ':' . $rpc['port'] . '/', $debug_rpc) or die('Error: could not connect to RPC server.');
 
 	$lastPayout = 0;
-	$adresses = array();
 
 	function getAddress($trans)
 	{
